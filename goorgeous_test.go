@@ -652,6 +652,16 @@ func TestFixedWidthAreas(t *testing.T) {
 	testOrgCommon(testCases, t)
 }
 
+func TestLinebreaksBeforeHeadings(t *testing.T) {
+	testCases := map[string]testCase{
+		"linebreaks-before-headings": {
+			"* Foo\nFoo paragraph.\n* Bar\nBar paragraph.",
+			"<h1 id=\"foo\">Foo</h1>\n\n<p>Foo paragraph.</p>\n\n<h1 id=\"bar\">Bar</h1>\n\n<p>Bar paragraph.</p>\n",
+		},
+	}
+	testOrgCommon(testCases, t)
+}
+
 func testOrgCommon(testCases map[string]testCase, t *testing.T) {
 	for caseName, tc := range testCases {
 
